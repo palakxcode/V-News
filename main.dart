@@ -36,7 +36,7 @@ class _VNewsHomePageState extends State<VNewsHomePage> {
     EventsPage(),
     ClubsPage(),
     SnapshotsPage(),
-    VoiceVotesPage(),
+    VoicesVotesContent(),
     RegistrationFormPage(),
   ];
 
@@ -85,7 +85,7 @@ class _VNewsHomePageState extends State<VNewsHomePage> {
             label: 'SNAPSHOT',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.how_to_vote),
+            icon: Icon(Icons.poll),
             label: 'VOICES & VOTES',
           ),
         ],
@@ -98,41 +98,5 @@ class _VNewsHomePageState extends State<VNewsHomePage> {
         onTap: _onItemTapped,
       ),
     );
-  }
-}
-
-// Content widgets for each tab
-class PrimeContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Prime Content'));
-  }
-}
-
-class EventsContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Events Content'));
-  }
-}
-
-class ClubsContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Clubs Content'));
-  }
-}
-
-class SnapshotContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Snapshot Content'));
-  }
-}
-
-class VoicesVotesContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Voices & Votes Content'));
   }
 }
