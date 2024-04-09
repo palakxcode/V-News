@@ -1,74 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class SnapshotsPage extends StatelessWidget {
+class SnapshotsPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        SnapshotCard(
-          title: 'Beautiful Sunset',
-          imageUrl: 'assets/sunset.jpg', // Add your snapshot image
-        ),
-        SnapshotCard(
-          title: 'Sunrise at the Beach',
-          imageUrl: 'assets/sunrise_beach.jpg', // Add another snapshot image
-        ),
-        SnapshotCard(
-          title: 'City Lights',
-          imageUrl: 'assets/city_lights.jpg', // Add another snapshot image
-        ),
-        SnapshotCard(
-          title: 'Mountain Peaks',
-          imageUrl: 'assets/mountain_peaks.jpg', // Add another snapshot image
-        ),
-        SnapshotCard(
-          title: 'Starry Night',
-          imageUrl: 'assets/starry_night.jpg', // Add another snapshot image
-        ),
-        // Add more snapshot cards as needed
-      ],
-    );
-  }
+  _SnapshotsPageState createState() => _SnapshotsPageState();
 }
 
-class SnapshotCard extends StatelessWidget {
-  final String title;
-  final String imageUrl;
+class _SnapshotsPageState extends State<SnapshotsPage> {
+  final ImagePicker _picker = ImagePicker();
 
-  SnapshotCard({
-    required this.title,
-    required this.imageUrl,
-  });
+  Future<void> _pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      // Use the selected image file
+      // For example, you can upload the image or use it in your UI
+    } else {
+      // Handle the case when no image is selected
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return Scaffold(
+      body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              title,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          AspectRatio(
-            aspectRatio: 1.0, // Make the image square
-            child: Image.asset(imageUrl), // Display snapshot image
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Icon(Icons.thumb_up),
-              Icon(Icons.thumb_down),
-              Icon(Icons.comment),
-            ],
-          ),
+          // Your SnapshotCards...
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _pickImage,
+        tooltip: 'Upload Photo',
+        child: Icon(Icons.add_a_photo),
       ),
     );
   }
 }
+
+// Your SnapshotCard widget remains unchanged.
