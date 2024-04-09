@@ -4,7 +4,9 @@ import 'events_page.dart';
 import 'clubs_page.dart';
 import 'snapshots_page.dart';
 import 'voice_votes_page.dart';
+import 'login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'registration_form.dart';
 
 void main() => runApp(VNewsApp());
 
@@ -16,7 +18,7 @@ class VNewsApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: VNewsHomePage(),
+      home: LoginPage(),
     );
   }
 }
@@ -35,6 +37,7 @@ class _VNewsHomePageState extends State<VNewsHomePage> {
     ClubsPage(),
     SnapshotsPage(),
     VoiceVotesPage(),
+    RegistrationFormPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -52,7 +55,8 @@ class _VNewsHomePageState extends State<VNewsHomePage> {
           IconButton(
             icon: Icon(Icons.account_circle),
             onPressed: () {
-              // Handle account logo action
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => RegistrationFormPage()));
             },
           ),
         ],
