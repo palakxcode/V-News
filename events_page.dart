@@ -1,55 +1,78 @@
 import 'package:flutter/material.dart';
 
 class EventsPage extends StatelessWidget {
+  // Dummy data for live and upcoming events
+  final List<Map<String, dynamic>> liveEvents = [
+    {
+      'logo': 'assets/my_logo.png',
+      'name': 'Tech Talk',
+      'location': 'Auditorium A',
+    },
+    // Add more live events here
+  ];
+  final List<Map<String, dynamic>> upcomingEvents = [
+    {
+      'logo': 'assets/club2_logo.png',
+      'name': 'Art Workshop',
+      'club': 'Art Club',
+      'venue': 'Room 101',
+      'date': 'April 15, 2024',
+      'time': '10:00 AM',
+    },
+    // Add more upcoming events here
+  ];
+
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
-        EventCard(
-          title: 'Live Event: Flutter Workshop',
-          description: 'Join us for an interactive Flutter workshop!',
-          isLive: true,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text('Live Events',
+              style: Theme.of(context).textTheme.headlineSmall),
         ),
-        EventCard(
-          title: 'Upcoming Event: Hackathon',
-          description: 'Get ready for the V-NEWS Hackathon!',
-          isLive: false,
+        ...liveEvents.map((event) => ListTile(
+              leading: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  image: DecorationImage(
+                    image: AssetImage(event['logo']),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              title: Text(event['name']),
+              subtitle: Text(event['location']),
+              isThreeLine: true,
+            )),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text('Upcoming Events',
+              style: Theme.of(context).textTheme.headline5),
         ),
-        // Add more event cards as needed
+        ...upcomingEvents.map((event) => ExpansionTile(
+              leading: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  image: DecorationImage(
+                    image: AssetImage(event['logo']),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              title: Text('${event['name']} - ${event['club']}'),
+              children: <Widget>[
+                ListTile(
+                  title: Text('Venue: ${event['venue']}'),
+                  subtitle: Text('Date: ${event['date']} at ${event['time']}'),
+                ),
+              ],
+            )),
       ],
-    );
-  }
-}
-
-class EventCard extends StatelessWidget {
-  final String title;
-  final String description;
-  final bool isLive;
-
-  EventCard({
-    required this.title,
-    required this.description,
-    required this.isLive,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Column(
-        children: [
-          ListTile(
-            title: Text(title),
-            subtitle: Text(description),
-            trailing: Icon(
-              isLive ? Icons.live_tv : Icons.schedule,
-              color:
-                  isLive ? const Color.fromARGB(255, 17, 112, 21) : Colors.blue,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
