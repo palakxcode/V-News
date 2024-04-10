@@ -33,6 +33,14 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.asset('assets/my_logo.png',
+                    width: 80, height: 80), // Add your logo here
+              ),
               Text(
                 'Let\'s sign you in!',
                 textAlign: TextAlign.center,
@@ -41,14 +49,6 @@ class LoginPage extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 0.5),
-              ),
-              Text(
-                'Welcome back! \n You\'ve been missed!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                    color: Colors.blueGrey),
               ),
 
               //TODO: Add Username & Password text fields
