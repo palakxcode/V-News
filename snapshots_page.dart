@@ -85,7 +85,7 @@ class _SnapshotsPageState extends State<SnapshotsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image Picker Example'),
+        title: Text(''),
       ),
       body: Center(
         child: _image == null
