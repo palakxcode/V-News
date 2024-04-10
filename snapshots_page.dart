@@ -94,7 +94,17 @@ class _SnapshotsPageState extends State<SnapshotsPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Image.network(_image!.path),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.92,
+                      height: MediaQuery.of(context).size.width * 0.92,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.file(
+                          File(_image!.path),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
