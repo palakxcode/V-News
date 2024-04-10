@@ -5,13 +5,13 @@ class PrimePage extends StatelessWidget {
     'Breaking News: Flutter Tops Charts in Developer Satisfaction!',
     'VIT Chennai Wins National Hackathon',
     'New Study Reveals Benefits of Bananas for Programmers',
-    // Add more news headlines here
+    
   ];
 
   final List<String> recentNews = [
     'Yesterday: VIT Chennai Celebrates Annual Sports Day',
     '2 Days Ago: Flutter Workshop Conducted by V-NEWS Team',
-    // Add more recent news items here
+    
   ];
 
   @override
